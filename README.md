@@ -6,3 +6,4 @@ Members
 - [Saurav < https://github.com/sauravhiremath >](https://github.com/sauravhiremath)
 - [Shashank < https://github.com/unvieux >](https://github.com/unvieux)
 - [Anurag < https://github.com/AnuragM8 >](https://github.com/AnuragM8)
+- [Rohit < https://github.com/Rohit23110 >](https://github.com/Rohit23110)
