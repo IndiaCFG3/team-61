@@ -18,6 +18,7 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import Home from "./Home";
 import Dashboard from "./Dashboard";
+import Admin from "./Admin";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -64,17 +65,22 @@ class AppNavbar extends Component {
                 </Link>
               </Menu.Item>
               <Menu.Item key="5" icon={<BarChartOutlined />}>
-                Admin
+                <Link className="link" to="/admin">
+                  ADMIN
+                </Link>
               </Menu.Item>
             </Menu>
           </Sider>
           <Layout className="site-layout" style={{ marginLeft: 200 }}>
             <Header className="site-layout-background" style={{ padding: 0 }} />
             <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
-              {this.state === true && <Route path="/dashboard" component={Dashboard} />}
+              {this.state === true && (
+                <Route path="/dashboard" component={Dashboard} />
+              )}
               <Route path="/home" component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={SignUp} />
+              <Route path="/admin" component={Admin} />
             </Content>
             <Footer style={{ textAlign: "center" }}>Panah Foundation TM</Footer>
           </Layout>
