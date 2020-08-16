@@ -29,17 +29,17 @@ const UserSchema = new mongoose.Schema({
   },
   maritalStatus: {
     type: String,
-    enum: ["Married", "Unmarried" ,"Widow/Widower"],
+    enum: ["Married", "Unmarried", "Widow/Widower"],
     required: true,
   },
   educationStatus: {
     type: String,
-    enum: ["10th Pass","12th Pass","Undergraduate","Graduate and above","None of the above"],
+    enum: ["10th", "12th", "UG", "None of the above"],
     required: true,
   },
   reservationStatus: {
     type: String,
-    enum: ["General","SC","ST","OBC","EWC"],
+    enum: ["General", "SC", "ST", "OBC", "EWC"],
     required: true,
   },
   personWithDisability: {
@@ -56,7 +56,7 @@ const UserSchema = new mongoose.Schema({
   },
   urbanRural: {
     type: String,
-    enum: ["Urban", "Rural"],
+    enum: ["Urban", "Rural", "Urban and Rural"],
     required: true,
   },
   memberVerificationStatusPayment: {
@@ -70,7 +70,7 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: false,
-  }
+  },
 });
 
 module.exports = User = mongoose.model("users", UserSchema);

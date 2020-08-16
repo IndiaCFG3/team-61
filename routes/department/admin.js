@@ -32,6 +32,7 @@ router.post("/", async (req, res) => {
     educationStatus: req.body.educationStatus,
     reservationStatus: req.body.reservationStatus,
     personWithDisability: req.body.personWithDisability,
+    urbanRural: req.body.urbanRural,
   });
   try {
     const saveItem = await newItem.save();

@@ -28,22 +28,27 @@ const SchemeSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    enum: ["Female", "Male"],
+    enum: ["Female", "Male", "All"],
     required: true,
   },
   maritalStatus: {
     type: String,
-    enum: ["Married", "Unmarried" ,"Widow/Widower"],
+    enum: ["Married", "Unmarried", "Widow/Widower"],
     required: true,
   },
+  // incomeRange: {
+  //   type: String,
+  //   enum: ["<1 Lakh", "1 - 3 Lakh", "3 - 5 Lakh", "5> Lakh"],
+  //   required: true,
+  // },
   educationStatus: {
     type: String,
-    enum: ["10th Pass","12th Pass","Undergraduate","Graduate and above","None of the above"],
+    enum: ["10th", "12th", "UG", "None of the above"],
     required: true,
   },
   reservationStatus: {
     type: String,
-    enum: ["General","SC","ST","OBC","EWC"],
+    enum: ["General", "SC", "ST", "OBC", "EWC"],
     required: true,
   },
   personWithDisability: {
@@ -53,7 +58,7 @@ const SchemeSchema = new mongoose.Schema({
   },
   urbanRural: {
     type: String,
-    enum: ["Urban", "Rural"],
+    enum: ["Urban", "Rural", "Urban and Rural"],
     required: true,
   },
 });
