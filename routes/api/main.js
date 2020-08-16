@@ -20,7 +20,7 @@ const Schemes = require("../../models/Schemes");
 //   }
 // });
 
-// @route GET api/schemes
+// @route GET /main
 // @desc Get the schemes
 // @access Public
 // redirect the second page here shows all schemes

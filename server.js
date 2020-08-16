@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 //setting up routes
-app.use("/api/main", main);
+app.use("/main", main);
 app.use("/api/users", user);
 app.use("/department/dept", dept);
 app.use("/department/admin", admin);

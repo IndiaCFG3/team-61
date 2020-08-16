@@ -100,4 +100,17 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// // @route GET api/schemes
+// // @desc Get the schemes
+// // @access Public
+// // redirect the second page here shows all schemes
+// router.get("/", async (req, res) => {
+//   try {
+//     const schemes = await Schemes.find();
+//     res.status(200).json(schemes);
+//   } catch (error) {
+//     res.status(500).json({ message: error });
+//   }
+// });
+
 module.exports = router;
