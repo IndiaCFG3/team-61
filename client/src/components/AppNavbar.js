@@ -7,9 +7,15 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
+  
   Container,
 } from "reactstrap";
+import {Route, HashRouter, NavLink } from "react-router-dom";
+import "./AppNavbar.css";
+import Login from "./Login";
+import SignUp from "./SignUp";
+import { BrowserRouter as Router } from "react-router-dom";
+
 
 class AppNavbar extends Component {
   state = {
@@ -24,9 +30,21 @@ class AppNavbar extends Component {
     //render our navbar
     return (
       <div>
-        <Navbar color="dark" dark expand="sm" className="mb-5">
-          <Container></Container>
+        <Router>
+          <div className="mynav">
+        <Navbar  expand="sm" className="mb-5">
+          <Container>
+          
+           <NavLink className="link" to ="/Login">LOGIN</NavLink>
+           <NavLink className="link" to ="/SignUp">SIGNUP</NavLink>
+           <NavLink className="link" to ="/about">ABOUT</NavLink>
+           <NavLink className="link" to ="/contact">CONTACT US</NavLink>
+          </Container>
         </Navbar>
+        </div>
+          <Route path="/Login" component ={Login} />
+          <Route path="/SignUp" component ={SignUp} />
+        </Router>
       </div>
     );
   }
