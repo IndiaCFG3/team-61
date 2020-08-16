@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -21,32 +22,22 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   incomeRange: {
-    "<1 Lakh": Boolean,
-    "1 - 3 Lakh": Boolean,
-    "3 - 5 Lakh": Boolean,
-    "5> Lakh": Boolean,
+    type: String,
     required: true, 
   },
   maritalStatus: {
-    "married": Boolean,
-    "unmarried": Boolean,
-    "widow/widower": Boolean,
+    type: String,
+    enum: ["married","unmarried","widow/widower"],
     required: true
   },
   educationStatus: {
-    "10th Pass": Boolean,
-    "12th Pass": Boolean,
-    "Undergraduate": Boolean,
-    "Graduate and above": Boolean,
-    "None of the above": Boolean,
+    type: String,
+    enum: ["10th Pass","12th Pass","Undergraduate","Graduate and above","None of the above"],
     required: true,
   },
   reservationStatus: {
-    "General": Boolean,
-    "SC": Boolean,
-    "ST": Boolean,
-    "OBC": Boolean,
-    "EWC": Boolean,
+    type: String,
+    enum: ["General","SC","ST","OBC","EWC"],
     required: true
   },
   personWithDisability: {
@@ -62,8 +53,8 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
   urbanRural: {
-    urban: Boolean,
-    rural: Boolean,
+    type: String,
+    enum: ["urban", "rural"],
     required: true
   },
   memberVerificationStatusPayment: {
@@ -77,10 +68,6 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: false,
-  },
-  appliedSchemes: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: appliedSchemesSchema,
   }
 });
 
@@ -94,8 +81,8 @@ const SchemeSchema = new mongoose.Schema({
     required: true
   },
   centralOrState: {
-    central: Boolean,
-    state: Boolean,
+    type: String,
+    enum: ["central","state"],
     required: true
   },
   qualifiedStates: {
@@ -106,7 +93,7 @@ const SchemeSchema = new mongoose.Schema({
     type: Object,
     required: true,
   },
-  conditionsRequired: {
+  conditionsRequired: [{
     gender: {
       type: Boolean,
       required: true
@@ -132,14 +119,18 @@ const SchemeSchema = new mongoose.Schema({
       required: true,
     },
     urbanRural: {
-      urban: Boolean,
-      rural: Boolean,
+      type: String,
+      enum: ["urban", "rural"],
       required: true
     },
-  }
+  }],
 });
 
-appliedScheme = new mongoose.Document({
+userScheme = new mongoose.Schema({
+  userID: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  },
   schemeID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Scheme"
