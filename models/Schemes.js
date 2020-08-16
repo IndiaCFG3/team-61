@@ -15,8 +15,7 @@ const SchemeSchema = new mongoose.Schema({
   },
   centralOrState: {
     type: String,
-    enum: ["urban", "rural"],
-    required: true,
+    enum: ["Central", "State"],
   },
   qualifiedStates: {
     type: Object,
@@ -26,33 +25,42 @@ const SchemeSchema = new mongoose.Schema({
     type: Object,
     required: true,
   },
-  conditionsRequired: [
-    {
-      gender: {
-        type: Boolean,
-        required: true,
-      },
-      maritalStatus: {
-        type: String,
-        enum: ["Married", "Unmarried", "Widow"],
-        required: true,
-      },
-      educationStatus: {
-        type: String,
-        enum: ["12th", "10th", "8th"],
-        required: true,
-      },
-      reservationStatus: {
-        type: String,
-        enum: ["GEN", "SC", "ST", "OBC"],
-        required: true,
-      },
-      personWithDisability: {
-        type: Boolean,
-        required: true,
-      },
-    },
-  ],
+  gender: {
+    type: String,
+    enum: ["Female", "Male"],
+    required: true,
+  },
+  maritalStatus: {
+    type: String,
+    enum: ["Married", "Unmarried", "Widow"],
+    required: true,
+  },
+  educationStatus: {
+    type: String,
+    enum: [
+      "10th Pass",
+      "12th Pass",
+      "Undergraduate",
+      "Graduate and above",
+      "None of the above",
+    ],
+    required: true,
+  },
+  reservationStatus: {
+    type: String,
+    enum: ["General", "SC", "ST", "OBC", "EWC"],
+    required: true,
+  },
+  personWithDisability: {
+    type: String,
+    enum: ["YES", "NO"],
+    required: true,
+  },
+  urbanRural: {
+    type: String,
+    enum: ["Urban", "Rural"],
+    required: true,
+  },
 });
 
 module.exports = Schemes = mongoose.model("schemes", SchemeSchema);
