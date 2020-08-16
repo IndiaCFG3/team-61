@@ -1,53 +1,95 @@
 // were using reactstreap for this
 import React, { Component } from "react";
+import "antd/dist/antd.css";
+import { Layout, Menu, Breadcrumb, Carousel } from "antd";
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  
-  Container,
-} from "reactstrap";
-import {Route, HashRouter, NavLink } from "react-router-dom";
-import "./AppNavbar.css";
+  AppstoreOutlined,
+  BarChartOutlined,
+  CloudOutlined,
+  ShopOutlined,
+  TeamOutlined,
+  UserOutlined,
+  UploadOutlined,
+  VideoCameraOutlined,
+} from "@ant-design/icons";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import Login from "./Login";
 import SignUp from "./SignUp";
-import { BrowserRouter as Router } from "react-router-dom";
+import Home from "./Home";
+import Dashboard from "./Dashboard";
 
+const { Header, Content, Footer, Sider } = Layout;
 
 class AppNavbar extends Component {
   state = {
-    isOpen: false,
+    isLoggedIn: false,
   };
-  toggle = () => {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
-  };
+  // toggle = () => {
+  //   this.setState({
+  //     isOpen: !this.state.isOpen,
+  //   });
+  // };
   render() {
     //render our navbar
     return (
-      <div>
+      <Layout>
         <Router>
-          <div className="mynav">
-        <Navbar  expand="sm" className="mb-5">
-          <Container>
-          
-           <NavLink className="link" to ="/Login">LOGIN</NavLink>
-           <NavLink className="link" to ="/SignUp">SIGNUP</NavLink>
-           <NavLink className="link" to ="/about">ABOUT</NavLink>
-           <NavLink className="link" to ="/contact">CONTACT US</NavLink>
-          </Container>
-        </Navbar>
-        </div>
-          <Route path="/Login" component ={Login} />
-          <Route path="/SignUp" component ={SignUp} />
+          <Sider
+            style={{
+              overflow: "auto",
+              height: "100vh",
+              position: "fixed",
+              left: 0,
+            }}
+          >
+            <div className="logo" />
+            <Menu theme="dark" mode="vertical" defaultSelectedKeys={["1"]}>
+              <Menu.Item key="1" icon={<UserOutlined />}>
+                <Link to="/Home">HOME</Link>
+              </Menu.Item>
+              <Menu.Item key="2" icon={<UserOutlined />}>
+                <Link className="link" to="/signup">
+                  REGISTER
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="3" icon={<VideoCameraOutlined />}>
+                <Link className="link" to="/login">
+                  LOGIN
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="4" icon={<UploadOutlined />}>
+                <Link className="link" to="/about">
+                  ABOUT
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="5" icon={<BarChartOutlined />}>
+                Admin
+              </Menu.Item>
+            </Menu>
+          </Sider>
+          <Layout className="site-layout" style={{ marginLeft: 200 }}>
+            <Header className="site-layout-background" style={{ padding: 0 }} />
+            <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
+              {this.state === true && <Route path="/dashboard" component={Dashboard} />}
+              <Route path="/home" component={Home} />
+              <Route path="/login" component={Login} />
+              <Route path="/signup" component={SignUp} />
+            </Content>
+            <Footer style={{ textAlign: "center" }}>Panah Foundation TM</Footer>
+          </Layout>
         </Router>
-      </div>
+      </Layout>
     );
   }
 }
+
+// const contentStyle = {
+//   height: "160px",
+//   color: "#fff",
+//   lineHeight: "160px",
+//   textAlign: "center",
+//   background: "#364d79",
+// };
 
 export default AppNavbar;
