@@ -10,6 +10,8 @@ const passport = require("passport");
 // const db = require("./config/keys").mongoURI;
 const connectDB = require("./config/db");
 var user = require("./routes/api/users");
+var dept = require("./routes/department/dept");
+var admin = require("./routes/department/admin");
 dotenv.config({ path: "./config/config.env" });
 // Passport config
 require("./config/passport")(passport);
@@ -32,7 +34,8 @@ if (process.env.NODE_ENV === "development") {
 
 //setting up routes
 app.use("/api/users", user);
-
+app.use("/department/dept", dept);
+app.use("/department/admin", admin);
 const PORT = process.env.PORT || 5000;
 app.listen(
   PORT,
