@@ -36,23 +36,23 @@ const columns = [
 const data = [
   {
     key: '1',
-    name: 'John Brown',
+    name: 'Ramesh Chauhan',
     age: 32,
-    address: 'New York No. 1 Lake Park',
+    address: 'Patna, India',
     index: 0,
   },
   {
     key: '2',
-    name: 'Jim Green',
+    name: 'Raju Someone',
     age: 42,
-    address: 'London No. 1 Lake Park',
+    address: 'Banglore, Karnataka',
     index: 1,
   },
   {
     key: '3',
-    name: 'Joe Black',
+    name: 'Manya Singh',
     age: 32,
-    address: 'Sidney No. 1 Lake Park',
+    address: 'Uttarakhand, India',
     index: 2,
   },
 ];
