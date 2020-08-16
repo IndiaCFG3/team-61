@@ -200,7 +200,7 @@ export default class EditableTable extends React.Component {
     });
     return (
       <>
-        <Card>
+        <Card title="ALL USERS">
           <div>
             <Button
               onClick={this.handleAdd}
@@ -209,7 +209,7 @@ export default class EditableTable extends React.Component {
                 marginBottom: 16,
               }}
             >
-              Add a row
+              Add a User
             </Button>
             <Table
               components={components}
@@ -220,7 +220,8 @@ export default class EditableTable extends React.Component {
             />
           </div>
         </Card>
-        <Card>
+        <br />
+        <Card title="GOVERNMENT SCHMES">
           <SchemaAdd />
         </Card>
       </>

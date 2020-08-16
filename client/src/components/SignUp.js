@@ -2,6 +2,7 @@ import React from "react";
 import loginImg from "../login.svg";
 import "./SignUp.scss";
 import { Card } from "antd";
+import { sendOTP } from "./sendOTP";
 
 export default class SignUp extends React.Component {
   constructor(props) {
@@ -114,7 +115,7 @@ export default class SignUp extends React.Component {
             </div>
           </div>
           <div className="footer">
-            <button type="button" className="btn">
+            <button type="button" className="btn" onClick={() => sendOTP()}>
               Register
             </button>
           </div>

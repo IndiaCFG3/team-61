@@ -1,31 +1,29 @@
-const sgMail = require('@sendgrid/mail');
+require('dotenv').config();
+const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+console.log(process.env.SENDGRID_API_KEY);
+
+const otp = Math.floor(100000 + Math.random() * 900000);
 const msg = {
-  to: 'test@example.com',
-  from: 'test@example.com', // Use the email address or domain you verified above
-  subject: 'Sending with Twilio SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+  to: "vitsaurav@example.com",
+  from: "panah@gmail.com", // Use the email address or domain you verified above
+  subject: "[PANAH FOUNDATION] ENTER YOUR OTP",
+  text: `Thank you for registering with Panah. Your OTP is ${otp}`,
+  html: `<strong>Thank you for registering with Panah. Your OTP is ${otp}</strong>`,
 };
-//ES6
-sgMail
-  .send(msg)
-  .then(() => {}, error => {
-    console.error(error);
- 
-    if (error.response) {
-      console.error(error.response.body)
+
+export const sendOTP = () => {
+  //ES6
+  console.log("sending otp");
+  sgMail.send(msg).then(
+    () => {},
+    (error) => {
+      console.error(error);
+
+      if (error.response) {
+        console.error(error.response.body);
+      }
     }
-  });
-//ES8
-(async () => {
-  try {
-    await sgMail.send(msg);
-  } catch (error) {
-    console.error(error);
- 
-    if (error.response) {
-      console.error(error.response.body)
-    }
-  }
-})();
+  );
+};
