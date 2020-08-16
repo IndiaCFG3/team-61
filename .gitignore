@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-node_modules
 config/config.env
-=======
+node_modules
 Team*.zip
 *.pem
 *.ppk
 *.crt
 *.key
 *.ovpn
->>>>>>> eaae905906ad32b60f7ff93620453159ee28d153
