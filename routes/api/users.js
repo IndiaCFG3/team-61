@@ -45,7 +45,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-
 // @route POST api/users/register
 // @desc Register user
 // @access Public
@@ -73,7 +72,7 @@ router.post("/register", (req, res) => {
         incomeRange: req.body.incomeRange,
         address: req.body.address,
         state: req.body.state,
-        urbanRural: req.body.urbanRural
+        urbanRural: req.body.urbanRural,
       });
       // Hash password before saving in database
       bcrypt.hash(newUser.password, 12).then((hashed) => {
@@ -88,7 +87,20 @@ router.post("/register", (req, res) => {
 });
 
 // @route GET api/schemes
-// @desc Get the schemes 
+// @desc Get the schemes
+// @access Public
+// redirect the second page here shows all schemes
+router.get("/", async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+});
+
+// @route GET api/schemes
+// @desc Get the schemes
 // @access Public
 // redirect the second page here shows all schemes
 router.get("/", async (req, res) => {
@@ -96,12 +108,8 @@ router.get("/", async (req, res) => {
     const schemes = await Schemes.find();
     res.status(200).json(schemes);
   } catch (error) {
-    res.status(500).json({ message: err });
+    res.status(500).json({ message: error });
   }
 });
 
-
-
 module.exports = router;
-
-
