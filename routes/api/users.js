@@ -12,7 +12,8 @@ const router = express.Router();
 const validateRegisterInput = require("../../controllers/register");
 const validateLoginInput = require("../../controllers/login");
 const User = require("../../models/User");
-
+const Schemes = require("../../models/Schemes");
+const AppliedSchemes = require("../../models/AppliedSchemes");
 // @route POST /users/login
 // @desc Login user and return JWT token
 // @access Public
@@ -87,25 +88,12 @@ router.post("/register", (req, res) => {
 });
 
 // @route GET api/schemes
-// @desc Get the schemes
+// @desc Display the schemes for individual user
 // @access Public
-// redirect the second page here shows all schemes
-router.get("/", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    const users = await User.find();
-    res.status(200).json(users);
-  } catch (error) {
-    res.status(500).json({ message: error });
-  }
-});
-
-// @route GET api/schemes
-// @desc Get the schemes
-// @access Public
-// redirect the second page here shows all schemes
-router.get("/", async (req, res) => {
-  try {
-    const schemes = await Schemes.find();
+    const id = req.params.id;
+    const schemes = await AppliedSchemes.find({ userID: id });
     res.status(200).json(schemes);
   } catch (error) {
     res.status(500).json({ message: error });
