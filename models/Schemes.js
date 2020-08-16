@@ -36,11 +36,11 @@ const SchemeSchema = new mongoose.Schema({
     enum: ["Married", "Unmarried", "Widow/Widower"],
     required: true,
   },
-  incomeRange: {
-    type: String,
-    enum: ["<1 Lakh", "1 - 3 Lakh", "3 - 5 Lakh", "5> Lakh"],
-    required: true,
-  },
+  // incomeRange: {
+  //   type: String,
+  //   enum: ["<1 Lakh", "1 - 3 Lakh", "3 - 5 Lakh", "5> Lakh"],
+  //   required: true,
+  // },
   educationStatus: {
     type: String,
     enum: ["10th", "12th", "UG", "None of the above"],
