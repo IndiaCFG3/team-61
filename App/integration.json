@@ -1,0 +1,7 @@
+const spawn = require('child_process').spawn;
+
+constprocess = spawn('python', ['/OTP_GEN_Integrated.py','Xen']);
+
+process.stdout.on('data', data => { 
+     console.log(data.toString());
+ });
