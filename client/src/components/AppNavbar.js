@@ -17,18 +17,19 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import Home from "./Home";
+import Dashboard from "./Dashboard";
 
 const { Header, Content, Footer, Sider } = Layout;
 
 class AppNavbar extends Component {
   state = {
-    isOpen: false,
+    isLoggedIn: false,
   };
-  toggle = () => {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
-  };
+  // toggle = () => {
+  //   this.setState({
+  //     isOpen: !this.state.isOpen,
+  //   });
+  // };
   render() {
     //render our navbar
     return (
@@ -49,7 +50,7 @@ class AppNavbar extends Component {
               </Menu.Item>
               <Menu.Item key="2" icon={<UserOutlined />}>
                 <Link className="link" to="/signup">
-                  SIGNUP
+                  REGISTER
                 </Link>
               </Menu.Item>
               <Menu.Item key="3" icon={<VideoCameraOutlined />}>
@@ -70,6 +71,7 @@ class AppNavbar extends Component {
           <Layout className="site-layout" style={{ marginLeft: 200 }}>
             <Header className="site-layout-background" style={{ padding: 0 }} />
             <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
+              {this.state === true && <Route path="/dashboard" component={Dashboard} />}
               <Route path="/home" component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={SignUp} />
